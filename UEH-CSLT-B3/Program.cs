@@ -10,54 +10,32 @@ namespace bai2
     {
         static void bai1()
         {
-            Console.OutputEncoding = Encoding.UTF8;
-
-            Console.WriteLine("Nhập vào A: ");
+            Console.WriteLine("Nhap vao a: ");
             float a = float.Parse(Console.ReadLine());
-
-            Console.WriteLine("Nhập vào B: ");
+            Console.WriteLine("Nhap vao b: ");
             float b = float.Parse(Console.ReadLine());
-
-            Console.WriteLine("Nhập vào C: ");
+            Console.WriteLine("Nhap vao c: ");
             float c = float.Parse(Console.ReadLine());
 
-            float delta = (b / 2) * (b / 2) - a * c;
-
-            Console.WriteLine("Phương trình nhập vào là:\n {0}x*x + {1}x + {2} = 0", a, b, c);
-
-            Console.WriteLine("Delta phẩy = {0}", delta);
-
             if (a == 0)
-                Console.WriteLine("Phuong trinh nay khong phai la phuong trinh bac 2 va nghiem cua phuong trinh nay la: x = " + (c * (-1)) / b);
+                if (b == 0)
+                    if (c == 0)
+                        Console.WriteLine("Phuong trinh co vo so nghiem nha ba");
+                    else Console.WriteLine("Phuong trinh vo nghiem nha ba");
+                else Console.WriteLine("Nghiem x = {0}" + (-c/b));
             else
-                switch (delta < 0)
+            {
+                double delta = b * b - 4 * a * c;
+                if (delta < 0) Console.WriteLine("Vo nghiem nha ba");
+                else if (delta == 0) Console.WriteLine("Pt co nghiem kep: x1 = x2 = " + (-b / (2 * a)));
+                    else
                 {
-                    case true:
-                        Console.WriteLine("Chương trình vô nghiệm");
-                        break;
-                    case false:
-                        switch (delta == 0)
-                        {
-                            case true:
-                                float x = (-b / 2) / a;
-                                Console.WriteLine("Phương trình có nghiệm kép x1 = x2 = {0}", x);
-                                break;
-                            default:
-                                double x1 = 0;
-                                double x2 = 0;
-
-                                x1 = ((-b / 2) - Math.Sqrt(delta)) / a;
-                                x2 = ((-b / 2) + Math.Sqrt(delta)) / a;
-
-                                Console.WriteLine("Phương trình có 2 nghiệm phân biệt: ");
-                                Console.WriteLine("x1 = {0}", x1);
-                                Console.WriteLine("x2 = {0}", x2);
-                                break;
-                        }
-                        break;
+                    double x1 = (-b + Math.Sqrt(delta)) / (2 * a);
+                    double x2 = (-b - Math.Sqrt(delta)) / (2 * a);
+                    Console.WriteLine("x1 = {0} va x2 = {1}", x1, x2);
                 }
 
-            Console.ReadKey();
+            }
         }
         static void bai2()
         {
